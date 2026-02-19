@@ -213,11 +213,12 @@ a:active { color: #9acc14; }
 }
 
 .table th {
-    background: rgba(154, 204, 20, 0.1);
+    background: #3c3c3c;
     color: #9acc14;
     border-bottom: 1px solid #4a4a4a;
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 .table td {

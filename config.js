@@ -7,7 +7,7 @@
 
 const CTF_CONFIG = {
     // Set to true when the CTF ends
-    isEventOver: false,
+    isEventOver: true,
 
     // Event details
     eventName: "1st Crackmes.one RE CTF",

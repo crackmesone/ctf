@@ -16,17 +16,16 @@ The site has two modes controlled by `config.js`:
 ### Switch to "CTF Ended" mode
 
 ```bash
-# 1. Import the scoreboard (choose one method)
+# 1. Download scoreboard CSV from CTFd admin panel
+#    (Admin -> Scoreboard -> Export CSV)
 
-# Method A: With API token (get from CTFd admin)
-./import-scoreboard.sh https://crackmesone.ctfd.io YOUR_API_TOKEN
+# 2. Convert CSV to JSON (strips emails, keeps rank/name/score only)
+python3 convert-scoreboard.py "Crackmesone CTF-scoreboard.csv"
 
-# Method B: Manual - export from CTFd and save as scoreboard.json
-
-# 2. Flip the switch
+# 3. Flip the switch
 sed -i '' 's/isEventOver: false/isEventOver: true/' config.js
 
-# 3. Deploy
+# 4. Deploy
 git add .
 git commit -m "CTF ended - final scoreboard"
 git push
@@ -46,19 +45,29 @@ git push
 | File | Purpose |
 |------|---------|
 | `config.js` | Toggle `isEventOver` to switch modes |
-| `scoreboard.json` | Player rankings (top 100 shown) |
-| `import-scoreboard.sh` | Helper script to fetch scoreboard from CTFd |
+| `scoreboard.json` | Player rankings (generated from CSV) |
+| `convert-scoreboard.py` | Convert CTFd CSV export to JSON |
 | `index.html` | Main page |
 | `style.css` | Styling (matches crackmes.one theme) |
 | `app.js` | Logic to toggle UI and load scoreboard |
 
-## Scoreboard Format
+## Scoreboard
+
+The Hall of Fame shows top 100 players by default with a "Show All Players" button to display everyone.
+
+### Converting from CTFd Export
+
+1. Go to CTFd Admin -> Scoreboard -> Export (CSV)
+2. Run: `python3 convert-scoreboard.py "your-export.csv"`
+3. This creates `scoreboard.json` with only rank, name, and score (no emails)
+
+### JSON Format
 
 ```json
 {
   "standings": [
-    {"name": "player1", "score": 1000},
-    {"name": "player2", "score": 950}
+    {"rank": 1, "name": "player1", "score": 1000},
+    {"rank": 2, "name": "player2", "score": 950}
   ]
 }
 ```
@@ -70,3 +79,8 @@ python3 -m http.server 8080
 # Open http://localhost:8080
 # Hard refresh (Cmd+Shift+R) after changing config.js
 ```
+
+## Privacy
+
+- `.gitignore` excludes `*.csv` files to prevent committing emails
+- Only `scoreboard.json` (rank, name, score) is committed
