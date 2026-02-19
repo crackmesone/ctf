@@ -1,0 +1,365 @@
+/* crackmes.one CTF - Matching main site style */
+
+/* Base */
+* {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: rgb(39, 39, 39);
+    color: white;
+    font-family: ubuntu mono, monospace;
+}
+
+.wrapper {
+    flex: 1;
+}
+
+/* Links */
+a { color: #9acc14; }
+a:visited { color: #9acc14; }
+a:hover { color: #9acc14; text-decoration: none; }
+a:active { color: #9acc14; }
+
+/* Navbar */
+.navbar {
+    background: #171717;
+    padding: 0.5rem 1rem;
+}
+
+.title-navbar {
+    color: #9acc14 !important;
+    font-size: 1.2rem;
+}
+
+.title-navbar:hover {
+    text-decoration: none;
+}
+
+.btn.btn-link {
+    background: 0 0;
+    border-color: transparent;
+    color: #9acc14;
+}
+
+.btn.btn-link:hover {
+    color: #9acc14;
+    text-decoration: none;
+}
+
+.nav-label {
+    color: #9acc14;
+    font-weight: bold;
+}
+
+/* Container */
+.container {
+    margin-top: 20px;
+    max-width: 900px;
+    padding: 0 1rem;
+}
+
+/* Hero Section */
+.hero-section {
+    margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    color: #9acc14;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section .subtitle {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+/* Panel / Card Background */
+.panel-background {
+    background: #3c3c3c;
+    border: 1px solid #9acc14;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header {
+    padding: 1rem;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+.panel-title h3 {
+    margin: 0;
+    color: #9acc14;
+    display: inline;
+}
+
+.panel-body {
+    padding: 1.5rem;
+}
+
+.panel-body p {
+    color: #aaa;
+    margin-bottom: 1rem;
+}
+
+/* Live indicator */
+.live-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ff4757;
+    border-radius: 50%;
+    margin-right: 10px;
+    animation: pulse 1.5s infinite;
+    vertical-align: middle;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+}
+
+/* Buttons */
+.btn {
+    border: .05rem solid #9acc14;
+    color: #9acc14;
+}
+
+.btn:focus, .btn:hover {
+    background: #4a4a4a;
+    border-color: #9acc14;
+}
+
+.btn.btn-primary {
+    background: #9acc14;
+    border-color: #9acc14;
+    color: #171717;
+    font-weight: bold;
+}
+
+.btn.btn-primary:focus, .btn.btn-primary:hover {
+    background: #b8e619;
+    border-color: #b8e619;
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* Link Cards */
+.link-cards {
+    margin-bottom: 1.5rem;
+}
+
+.link-cards .column {
+    padding: 0.5rem;
+}
+
+.card-link {
+    display: block;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.card-link:hover {
+    border-color: #b8e619;
+    transform: translateY(-2px);
+}
+
+.card-link .panel-body {
+    padding: 1.2rem;
+}
+
+.card-link h4 {
+    font-size: 0.95rem;
+}
+
+.card-link p {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-link h4 {
+    color: #9acc14;
+    margin-bottom: 0.25rem;
+}
+
+.card-link p {
+    margin: 0;
+}
+
+/* Table */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.table {
+    width: 100%;
+    color: white;
+}
+
+.table th {
+    background: rgba(154, 204, 20, 0.1);
+    color: #9acc14;
+    border-bottom: 1px solid #4a4a4a;
+    position: sticky;
+    top: 0;
+}
+
+.table td {
+    border-bottom: 1px solid #4a4a4a;
+}
+
+.table.table-striped tbody tr:nth-of-type(odd) {
+    background: rgb(49, 49, 49);
+}
+
+.table.table-hover tbody tr:hover {
+    background: rgba(154, 204, 20, 0.1);
+}
+
+/* Top 3 medals */
+.rank-1 td:first-child::before { content: "🥇 "; }
+.rank-2 td:first-child::before { content: "🥈 "; }
+.rank-3 td:first-child::before { content: "🥉 "; }
+
+.rank-1, .rank-2, .rank-3 {
+    background: rgba(255, 215, 0, 0.05) !important;
+}
+
+/* Divider */
+.divider {
+    border-top: .05rem solid #6b6b6b;
+    margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+    padding: 1rem;
+    color: #666;
+}
+
+footer a {
+    color: #9acc14;
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-gray {
+    color: #888;
+}
+
+/* Scrollbar */
+.table-responsive::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: rgba(154, 204, 20, 0.3);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: rgba(154, 204, 20, 0.5);
+}
+
+/* About Section */
+.about-content h4 {
+    color: #9acc14;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 0.3rem;
+}
+
+.about-content h4:first-child {
+    margin-top: 0;
+}
+
+.about-content p {
+    color: #ccc;
+    margin-bottom: 0.75rem;
+}
+
+.about-content ul {
+    color: #ccc;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+}
+
+.about-content li {
+    margin-bottom: 0.3rem;
+}
+
+.about-content a {
+    color: #9acc14;
+}
+
+/* Credits badges - shields.io style */
+.credits p {
+    margin-bottom: 0.4rem;
+}
+
+.shield {
+    display: inline-flex;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.shield-left {
+    background: #555;
+    color: white;
+    padding: 0.15rem 0.4rem;
+}
+
+.shield-right {
+    color: white;
+    padding: 0.15rem 0.4rem;
+}
+
+.shield-admin {
+    background: #007ec6;
+}
+
+.shield-author {
+    background: #e05d44;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .navbar-section:last-child {
+        display: none;
+    }
+}

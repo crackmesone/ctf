@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#9acc14">
+    <link rel="icon" type="image/x-icon" href="https://crackmes.one/static/favicons/crackmes-logo.png">
+    <link rel="stylesheet" href="spectre.min.css">
+    <link rel="stylesheet" href="spectre-exp.min.css">
+    <link rel="stylesheet" href="spectre-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Crackmes.one RE CTF 2026</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <section class="navbar-section">
+            <h2><a href="https://crackmes.one" class="title-navbar">crackmes.one</a></h2>
+        </section>
+        <section class="navbar-center">
+            -
+        </section>
+        <section class="navbar-section">
+        </section>
+    </header>
+
+    <div class="wrapper">
+        <div class="container">
+            <!-- Header -->
+            <div class="text-center hero-section">
+                <h1>Crackmes.one RE CTF 2026</h1>
+                <p class="subtitle">1st Crackmes.one Reverse Engineering CTF</p>
+            </div>
+
+            <!-- Live Event Banner -->
+            <div id="live-banner" class="panel panel-background">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <span class="live-indicator"></span>
+                        <h3>The CTF is LIVE!</h3>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                    <p>Join now and test your reverse engineering skills</p>
+                    <a href="https://crackmesone.ctfd.io/" class="btn btn-primary btn-lg" target="_blank">
+                        Enter the CTF →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Event Over Banner (hidden by default) -->
+            <div id="finished-banner" class="panel panel-background hidden">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <h3>🏁 The CTF has ended!</h3>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                    <p>Thank you to all participants for making this event a success. See you next year!</p>
+                </div>
+            </div>
+
+            <!-- Links Section -->
+            <div class="columns link-cards">
+                <div class="column col-4 col-sm-12">
+                    <a href="https://github.com/crackmesone/ctf-2026-challenges-public" class="panel panel-background card-link" target="_blank">
+                        <div class="panel-body text-center">
+                            <div class="card-icon">📦</div>
+                            <h4>Challenges</h4>
+                            <p class="text-gray">Archive with solutions</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="column col-4 col-sm-12">
+                    <a href="https://ctftime.org/ctf/1414/" class="panel panel-background card-link" target="_blank">
+                        <div class="panel-body text-center">
+                            <div class="card-icon">⏱️</div>
+                            <h4>CTFtime</h4>
+                            <p class="text-gray">Event page</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="column col-4 col-sm-12">
+                    <a href="https://crackmes.one" class="panel panel-background card-link" target="_blank">
+                        <div class="panel-body text-center">
+                            <div class="card-icon">🏠</div>
+                            <h4>crackmes.one</h4>
+                            <p class="text-gray">Practice more RE</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hall of Fame (hidden during live event) -->
+            <div id="hall-of-fame" class="panel panel-background hidden">
+                <div class="panel-header">
+                    <div class="panel-title text-center">
+                        <h3>🏆 Hall of Fame - Top 100</h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Player</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scoreboard-body">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="panel panel-background about-section">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <h3>About the CTF</h3>
+                    </div>
+                </div>
+                <div class="panel-body about-content">
+                    <p>A week-long CTF dedicated <strong>exclusively to reverse engineering</strong>.<br>
+                    Hosted by <a href="https://crackmes.one/">crackmes.one</a>, inspired by the legendary <a href="https://flare-on.com/">Flare-On Challenge</a>.</p>
+
+                    <h4>Time</h4>
+                    <p><strong>Start:</strong> Sat 14 February 2026 00:00:00 UTC<br>
+                    <strong>End:</strong> Sat 21 February 2026 00:00:00 UTC<br>
+                    (Duration: <strong>one week</strong>)</p>
+
+                    <h4>Format</h4>
+                    <ul>
+                        <li><strong>Individual player</strong>, no team</li>
+                        <li><strong>All challenges unlocked</strong> from the start</li>
+                        <li><strong>Reverse engineering only</strong> — no pwn, no web, no crypto</li>
+                    </ul>
+
+                    <h4>Motivation</h4>
+                    <p>Most jeopardy-style CTFs mix categories: RE, pwn, web, crypto, misc, etc. That's like a triathlon — one person is usually only good at one category.</p>
+                    <p>But for RE fans, <strong>RE-only CTFs are rare</strong>. We want to change that:</p>
+                    <ul>
+                        <li><strong>Individual player</strong> vibe, so you try your best on the challenges</li>
+                        <li><strong>All challenges unlocked</strong> → no blockers if you get stuck</li>
+                        <li><strong>One week duration</strong> → longer than weekend CTFs, but not as exhausting as Flare-On</li>
+                    </ul>
+
+                    <h4>Challenges</h4>
+                    <ul>
+                        <li><strong>Exclusively reverse engineering</strong></li>
+                        <li>A <strong>wide range of platforms, architectures, and styles</strong></li>
+                        <li>Carefully designed to be <strong>diverse and enjoyable</strong></li>
+                    </ul>
+
+                    <h4>Prizes</h4>
+                    <ul>
+                        <li><a href="https://binary.ninja/">Binary Ninja</a> licenses (5 for top finishers, 1 for best binja write-up)</li>
+                        <li><a href="https://www.win-rar.com/start.html">Winrar</a> licenses (<em>seriously</em>)</li>
+                        <li>Hall of Fame</li>
+                    </ul>
+
+                    <h4>Credits</h4>
+                    <div class="credits">
+                        <p><span class="shield"><span class="shield-left">Lead</span><span class="shield-right shield-admin">Admin</span></span> <a href="https://www.linkedin.com/in/xusheng-li-8819b7329/">Xusheng</a></p>
+                        <p><span class="shield"><span class="shield-left">Lead</span><span class="shield-right shield-admin">Admin</span></span> <a href="https://lumiingenii.ch/">lumi</a></p>
+                        <p><span class="shield"><span class="shield-left">Lead</span><span class="shield-right shield-admin">Admin</span></span> <a href="https://elvisblue.github.io/">Elvis</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://bsky.app/profile/crudd.re">crudd</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://benlolo.me">Ben_Lolo</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://anduinbrian.github.io/">Reisen_1943 (Ze:R0)</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://cloud.google.com/security/flare">Moritz</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> sar</p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://github.com/Fatmike-GH">Fatmike</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://github.com/toasterbirb">toasterbirb</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://github.com/0x1c1101">heapsoverflow</a></p>
+                        <p><span class="shield"><span class="shield-left">Contributor</span><span class="shield-right shield-author">Author</span></span> <a href="https://revers.engineering/">daax</a></p>
+                    </div>
+
+                    <h4>Sponsors</h4>
+                    <p>We would like to thank our sponsors for supporting this event:</p>
+                    <ul>
+                        <li><a href="https://binary.ninja/">Vector 35 (Binary Ninja)</a></li>
+                    </ul>
+
+                    <h4>Contact</h4>
+                    <p>Please email crackmesone at gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="divider"></div>
+        <p>© 2026 <a href="https://crackmes.one">crackmes.one</a></p>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

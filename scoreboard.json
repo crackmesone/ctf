@@ -1,0 +1,7 @@
+{
+  "standings": [
+    {"name": "player1", "score": 1000},
+    {"name": "player2", "score": 950},
+    {"name": "player3", "score": 900}
+  ]
+}
