@@ -1,7 +1,3 @@
-// Scoreboard state
-let allPlayers = [];
-let showingAll = false;
-
 // Apply configuration on page load
 document.addEventListener('DOMContentLoaded', async () => {
     const liveBanner = document.getElementById('live-banner');
@@ -16,10 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Load scoreboard
         await loadScoreboard();
-
-        // Set up toggle button
-        const toggleBtn = document.getElementById('toggle-scoreboard');
-        toggleBtn.addEventListener('click', toggleScoreboard);
     } else {
         // Event is live
         liveBanner.classList.remove('hidden');
@@ -38,10 +30,26 @@ async function loadScoreboard() {
         }
 
         const data = await response.json();
-        allPlayers = data.standings || data;
+        const players = data.standings || data;
 
-        // Show top 100 by default
-        renderScoreboard(false);
+        tbody.innerHTML = players.map((player, index) => {
+            const rank = player.rank || index + 1;
+            const name = player.name || player.team || player.player || 'Unknown';
+            const score = player.score || player.points || 0;
+
+            let rankClass = '';
+            if (rank === 1) rankClass = 'rank-1';
+            else if (rank === 2) rankClass = 'rank-2';
+            else if (rank === 3) rankClass = 'rank-3';
+
+            return `
+                <tr class="${rankClass}">
+                    <td>${rank}</td>
+                    <td>${escapeHtml(name)}</td>
+                    <td>${score}</td>
+                </tr>
+            `;
+        }).join('');
 
     } catch (error) {
         tbody.innerHTML = `
@@ -53,46 +61,6 @@ async function loadScoreboard() {
         `;
         console.log('Scoreboard not loaded:', error.message);
     }
-}
-
-function renderScoreboard(showAll) {
-    const tbody = document.getElementById('scoreboard-body');
-    const title = document.getElementById('scoreboard-title');
-    const toggleBtn = document.getElementById('toggle-scoreboard');
-
-    const players = showAll ? allPlayers : allPlayers.slice(0, 100);
-
-    if (showAll) {
-        title.textContent = `All ${allPlayers.length} Players`;
-        toggleBtn.textContent = 'Show Top 100';
-    } else {
-        title.textContent = 'Top 100';
-        toggleBtn.textContent = `Show All ${allPlayers.length} Players`;
-    }
-
-    tbody.innerHTML = players.map((player, index) => {
-        const rank = player.rank || index + 1;
-        const name = player.name || player.team || player.player || 'Unknown';
-        const score = player.score || player.points || 0;
-
-        let rankClass = '';
-        if (rank === 1) rankClass = 'rank-1';
-        else if (rank === 2) rankClass = 'rank-2';
-        else if (rank === 3) rankClass = 'rank-3';
-
-        return `
-            <tr class="${rankClass}">
-                <td>${rank}</td>
-                <td>${escapeHtml(name)}</td>
-                <td>${score}</td>
-            </tr>
-        `;
-    }).join('');
-}
-
-function toggleScoreboard() {
-    showingAll = !showingAll;
-    renderScoreboard(showingAll);
 }
 
 // Prevent XSS

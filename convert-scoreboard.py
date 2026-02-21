@@ -23,6 +23,9 @@ def convert_csv_to_json(csv_path, json_path="scoreboard.json"):
     # Sort by rank (should already be sorted, but just in case)
     standings.sort(key=lambda x: x["rank"])
 
+    # Limit to top 100 players
+    standings = standings[:100]
+
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump({"standings": standings}, f, indent=2)
 
